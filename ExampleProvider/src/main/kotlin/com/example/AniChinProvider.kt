@@ -1,17 +1,40 @@
 package com.example
 
-import com.lagradost.cloudstream3.MainAPI
-import com.lagradost.cloudstream3.SearchResponse
-import com.lagradost.cloudstream3.TvType
+import com.lagradost.cloudstream3.*
+import com.lagradost.cloudstream3.utils.*
 
 class AniChinProvider : MainAPI() {
     override var mainUrl = "https://anichin.moe/"
-    override var name = "AniChin"
-    override val supportedTypes = setOf(TvType.Anime)
+    override var name = "AniChin Donghua"
     override var lang = "id"
     override val hasMainPage = false
+    override val supportedTypes = setOf(TvType.Anime)
+
+    private val userAgent =
+        "Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 Chrome/120.0.0.0 Mobile Safari/537.36"
 
     override suspend fun search(query: String): List<SearchResponse> {
-        return emptyList()
+        val document = app.get(
+            mainUrl,
+            params = mapOf("s" to query),
+            headers = mapOf("User-Agent" to userAgent)
+        ).document
+
+        return document.select("div.bsx").mapNotNull { item ->
+            val link = item.selectFirst("a.tip") ?: return@mapNotNull null
+            val title = link.attr("title").ifBlank {
+                item.selectFirst(".tt")?.text()?.trim().orEmpty()
+            }
+            val url = link.attr("href")
+            if (title.isBlank() || url.isBlank()) return@mapNotNull null
+
+            val poster = item.selectFirst("img")?.let {
+                it.attr("data-src").ifBlank { it.attr("src") }
+            }
+
+            newAnimeSearchResponse(title, url, TvType.Anime) {
+                posterUrl = poster?.let { fixUrl(it) }
+            }
+        }
     }
 }
