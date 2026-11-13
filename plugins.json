@@ -1,0 +1,23 @@
+[
+    {
+        "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png",
+        "fileHash": "sha256-42ceec9597d7f7228f162ab96df997b87fb1fe68782fa7809b723b9de36ac4ee",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/jatengahha-pixel/Anime-donghua-indo",
+        "fileSize": 8249,
+        "status": 1,
+        "language": "en",
+        "authors": [
+            "Cloudburst",
+            "Luna712"
+        ],
+        "tvTypes": [
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "ExampleProvider",
+        "description": "Lorem ipsum",
+        "url": "https://raw.githubusercontent.com/jatengahha-pixel/Anime-donghua-indo/builds/ExampleProvider.cs3",
+        "name": "ExampleProvider"
+    }
+]
