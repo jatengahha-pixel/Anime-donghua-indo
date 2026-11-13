@@ -33,7 +33,7 @@ class AniChinProvider : MainAPI() {
             }
 
             newAnimeSearchResponse(title, url, TvType.Anime) {
-                posterUrl = poster?.let { fixUrl(it) }
+                posterUrl = poster?.let { image -> if (image.startsWith("http")) image else mainUrl.trimEnd("/") + "/" + image.trimStart("/") }
             }
         }
     }
