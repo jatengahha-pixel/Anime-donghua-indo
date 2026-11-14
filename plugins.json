@@ -1,22 +1,22 @@
 [
     {
         "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png",
-        "fileHash": "sha256-1578c979ade81fe6290a2586d8b0c9b8b2e8cbf6837dc20a351a2f10ae0a3617",
+        "fileHash": "sha256-b6611fac1261495a6c3b4b49c7be105b0a1af230aa3c0a5c759f9d2bc9f1d520",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/jatengahha-pixel/Anime-donghua-indo",
-        "fileSize": 7956,
+        "fileSize": 10745,
         "status": 1,
-        "language": "en",
+        "language": "id",
         "authors": [
-            "Cloudburst",
-            "Luna712"
+            "jatengahha-pixel"
         ],
         "tvTypes": [
+            "Anime",
             "Movie"
         ],
         "version": 1,
         "internalName": "ExampleProvider",
-        "description": "Lorem ipsum",
+        "description": "Anime dan Donghua Subtitle Indonesia",
         "url": "https://raw.githubusercontent.com/jatengahha-pixel/Anime-donghua-indo/builds/ExampleProvider.cs3",
         "name": "ExampleProvider"
     }
