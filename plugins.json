@@ -1,10 +1,10 @@
 [
     {
         "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Korduene_Logo.png",
-        "fileHash": "sha256-b6611fac1261495a6c3b4b49c7be105b0a1af230aa3c0a5c759f9d2bc9f1d520",
+        "fileHash": "sha256-8b71421249eb376721bc97708e84238920e257ece1781a82ba778d8f3c8efdbd",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/jatengahha-pixel/Anime-donghua-indo",
-        "fileSize": 10745,
+        "fileSize": 10759,
         "status": 1,
         "language": "id",
         "authors": [
@@ -15,9 +15,9 @@
             "Movie"
         ],
         "version": 1,
-        "internalName": "ExampleProvider",
+        "internalName": "AnimeDonghuaIndo",
         "description": "Anime dan Donghua Subtitle Indonesia",
-        "url": "https://raw.githubusercontent.com/jatengahha-pixel/Anime-donghua-indo/builds/ExampleProvider.cs3",
-        "name": "ExampleProvider"
+        "url": "https://raw.githubusercontent.com/jatengahha-pixel/Anime-donghua-indo/builds/AnimeDonghuaIndo.cs3",
+        "name": "AnimeDonghuaIndo"
     }
 ]
