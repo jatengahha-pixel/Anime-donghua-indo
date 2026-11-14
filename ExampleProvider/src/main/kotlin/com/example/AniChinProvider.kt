@@ -28,12 +28,9 @@ class AniChinProvider : MainAPI() {
             val url = link.attr("href")
             if (title.isBlank() || url.isBlank()) return@mapNotNull null
 
-            val poster = item.selectFirst("img")?.let {
-                it.attr("data-src").ifBlank { it.attr("src") }
-            }
 
             newAnimeSearchResponse(title, url, TvType.Anime) {
-                posterUrl = poster?.let { image -> if (image.startsWith("http")) image else mainUrl.trimEnd("/") + "/" + image.trimStart("/") }
+                posterUrl = null
             }
         }
     }
