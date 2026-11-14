@@ -1,0 +1,8 @@
+{
+  "name": "Anime Donghua Indo",
+  "description": "Repository Anime dan Donghua Indonesia",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/jatengahha-pixel/Anime-donghua-indo/builds/plugins.json"
+  ]
+}
