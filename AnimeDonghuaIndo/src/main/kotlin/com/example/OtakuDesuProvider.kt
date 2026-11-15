@@ -1,7 +1,6 @@
 package com.example
 
 import com.lagradost.cloudstream3.*
-import org.jsoup.Jsoup
 
 class OtakuDesuProvider : MainAPI() {
     override var mainUrl = "https://otakudesu.blog/"
@@ -29,5 +28,45 @@ class OtakuDesuProvider : MainAPI() {
 
             newAnimeSearchResponse(title, url, TvType.Anime)
         }
+    }
+
+    override suspend fun load(url: String): LoadResponse? {
+        val document = app.get(
+            url,
+            headers = mapOf("User-Agent" to "Mozilla/5.0")
+        ).document
+
+        val title = document.selectFirst(".subheading h2")
+            ?.text()?.trim() ?: return null
+
+        val poster = document.selectFirst(".imganime img")?.attr("src")
+
+        val episodes = document.select(".download h4").mapNotNull { heading ->
+            val episodeName = heading.text().trim()
+
+            if (episodeName.isBlank() ||
+                episodeName.contains("Batch", ignoreCase = true)
+            ) return@mapNotNull null
+
+            newEpisode("$url#$episodeName") {
+                name = episodeName
+                episode = Regex("""Episode\s+(\d+)""")
+                    .find(episodeName)?.groupValues?.get(1)?.toIntOrNull()
+            }
+        }
+
+        return newAnimeLoadResponse(title, url, TvType.Anime) {
+            posterUrl = poster
+            addEpisodes(DubStatus.Subbed, episodes)
+        }
+    }
+
+    override suspend fun loadLinks(
+        data: String,
+        isCasting: Boolean,
+        subtitleCallback: (SubtitleFile) -> Unit,
+        callback: (ExtractorLink) -> Unit
+    ): Boolean {
+        return false
     }
 }
